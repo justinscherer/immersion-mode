@@ -2,7 +2,8 @@ import { onBeforeUnmount, ref, shallowRef } from 'vue'
 
 /**
  * Pre-generated narration: one MP3 + word-timed WebVTT per chapter, under
- * `public/immersion-mode/audio/<dir>/`. Chapter keys are the article's `h2` ids
+ * `public/immersion-audio/<dir>/` (not `public/immersion-mode/`, which would shadow
+ * this prototype's route on GitHub Pages). Chapter keys are the article's `h2` ids
  * (`Lead` is the lead section). Each chapter's first VTT sentence is its heading.
  */
 export interface AudioManifest {
@@ -52,7 +53,7 @@ interface Cue {
 }
 
 function audioUrl(manifest: AudioManifest, key: string, ext: 'mp3' | 'vtt') {
-  return `${import.meta.env.BASE_URL}immersion-mode/audio/${manifest.dir}/${key}.${ext}`
+  return `${import.meta.env.BASE_URL}immersion-audio/${manifest.dir}/${key}.${ext}`
 }
 
 function parseVttTime(s: string) {
